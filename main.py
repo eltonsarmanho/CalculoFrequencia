@@ -2,9 +2,9 @@ import pandas as pd;
 
 def load():
     # Use a breakpoint in the code line below to debug your script.
-    dataset = pd.read_csv('Dataset/frequencia_resp_1.csv')
-    dataset.drop(columns=['Carimbo de data/hora'],inplace=True)
-    print(dataset.info())
+    dataset = pd.read_csv('Dataset/Curso.csv',sep=',')
+    #dataset.drop(columns=['Carimbo de data/hora'],inplace=True)
+    print(dataset.head())
 
     dataset['Nome'] = dataset['Nome'].str.upper()
 
@@ -12,10 +12,13 @@ def load():
     return dataset;
 
 def generaeLaTex(dataset):
-    curso = 'Orientação Pedagógica para o Preenchimento do Relatório de Atividades'
-    for nome in dataset['Nome']:
+
+    for nome,local,curso,inicio,fim in zip(dataset['Nome'],dataset['Local'],dataset['Curso'],dataset['Inicio'],dataset['Fim']):
         #string = "\para{\textbf{\color{azul} {0}}}{\color{azul}{1}}{part}{6}{}".format(nome,curso)
-        string = "\para{\\textbf{\color{azul}"+nome+"}}{\color{azul}"+curso+"}{part}{6}{}"
+        data = inicio[0:5]+' a '+fim[0:5]+' de 2022'
+        cidade = local
+        curso = curso
+        string = "\para{\\textbf{\color{azul}"+nome+"}}{\color{azul}"+curso+"}{part}{"+data+"}{"+cidade+"}{}"
         print(string)
 
 # Press the green button in the gutter to run the script.

@@ -9,8 +9,9 @@ def load():
                                                filetypes=(("CSV files", "*.csv"), ("all files", "*.*")))
 
     charenc, delimiter = getInfoCSV(filepath)
+    print(charenc, delimiter)
     dataset = pd.read_csv(filepath,sep=delimiter,encoding=charenc)
-
+    print(dataset.shape)
     print(dataset.head())
     return dataset;
 

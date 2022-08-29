@@ -10,7 +10,7 @@ def load():
 
     charenc, delimiter = getInfoCSV(filepath)
     print(charenc, delimiter)
-    dataset = pd.read_csv(filepath,sep=delimiter,encoding=charenc)
+    dataset = pd.read_csv(filepath,sep=',',encoding=charenc)
     print(dataset.shape)
     print(dataset.head())
     return dataset;
@@ -35,12 +35,12 @@ def getColumn(index,dataset):
 
 def generaeLaTex(dataset):
 
-
-    for nome,local,curso,inicio,fim in zip(dataset[getColumn(0,dataset)],
-                                           dataset[getColumn(4,dataset)],
+    for nome,curso,ch,local,inicio,fim in zip(dataset[getColumn(0,dataset)],
                                            dataset[getColumn(1,dataset)],
-                                           dataset[getColumn(5,dataset)],
-                                           dataset[getColumn(6,dataset)]):
+                                           dataset[getColumn(2,dataset)],
+                                           dataset[getColumn(3,dataset)],
+                                           dataset[getColumn(4, dataset)],
+                                           dataset[getColumn(5,dataset)]):
         data = inicio[0:5]+' a '+fim[0:5]+' de 2022'
         cidade = local
         curso = curso

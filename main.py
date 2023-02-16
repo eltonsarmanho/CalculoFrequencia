@@ -41,7 +41,7 @@ def generaeLaTex(dataset):
                                            dataset[getColumn(3,dataset)],
                                            dataset[getColumn(4, dataset)],
                                            dataset[getColumn(5,dataset)]):
-        data = inicio[0:5]+' a '+fim[0:5]+' de 2022'
+        data = inicio[0:5]+' a '+fim[0:5]+' de 2023'
         cidade = local
         curso = curso
         string = "\para{\\textbf{\color{azul}"+nome.upper()+"}}{\color{azul}"+curso.upper()+"}{part}{"+data+"}{"+cidade+"}{}"

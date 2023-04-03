@@ -30,7 +30,7 @@ def generaeLaTex(dataset):
         cidade = 'Cametá'
         curso = 'Curso de LaTex Básico'
         string = "\para{\\textbf{"+nome.upper()+"}}{"+curso.upper()+"}{part}{6}{}"
-        print(string)
+        print(email)
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':

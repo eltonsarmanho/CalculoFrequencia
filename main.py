@@ -73,12 +73,12 @@ def generaeLaTex(dataset):
                                            dataset[getColumn(4, dataset)],
                                            dataset[getColumn(5,dataset)]):
         data = inicio[0:5]+' a '+fim[0:5]+' de 2023'
-        ch = '9'
+        craga_horaria_curso = '9'
         formatted_date_range = format_date_range(data)
 
         cidade = local
         curso = curso
-        string = "\para{\\textbf{\color{azul}"+nome.upper()+"}}{\color{azul}"+curso.upper()+"}{part}{"+ch+"}{"+formatted_date_range+"}{"+cidade+"}{}"
+        string = "\para{\\textbf{\color{azul}"+nome.upper()+"}}{\color{azul}"+curso.upper()+"}{part}{"+craga_horaria_curso+"}{"+formatted_date_range+"}{}"
         print(string)
 
 # Press the green button in the gutter to run the script.

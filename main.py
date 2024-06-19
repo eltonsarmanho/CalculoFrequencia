@@ -15,15 +15,28 @@ def load():
     print(dataset.head())
     return dataset;
 
+
 def getInfoCSV(filepath):
-    delimiter = ''
-    charenc = ''
-    with open(filepath, encoding='latin-1') as csvfile:
-        dialect = csv.Sniffer().sniff(csvfile.read(1024))
-        rawdata = open(filepath, 'rb').read()
-        result = chardet.detect(rawdata)
+    # Detectar a codificação
+    with open(filepath, 'rb') as rawdata:
+        result = chardet.detect(rawdata.read(2048))  # Ler mais bytes para uma detecção mais precisa
         charenc = result['encoding']
-        delimiter = dialect.delimiter
+
+    # Detectar o delimitador
+    with open(filepath, encoding=charenc) as csvfile:
+        sample = csvfile.read(2048)  # Ler mais bytes para uma amostra maior
+        try:
+            dialect = csv.Sniffer().sniff(sample)
+            delimiter = dialect.delimiter
+        except csv.Error:
+            # Tentativa manual com delimitadores comuns
+            delimiters = [',', ';', '\t', '|', ':']
+            for d in delimiters:
+                if d in sample:
+                    delimiter = d
+                    break
+            else:
+                delimiter = ','  # Default caso nenhum delimitador seja encontrado
 
     return charenc, delimiter
 
